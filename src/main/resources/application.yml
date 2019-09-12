@@ -1,0 +1,5 @@
+es:
+  instaces: localhost:9200
+  connection: http
+  username: johndoe
+  password: password
