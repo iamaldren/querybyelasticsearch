@@ -1,5 +1,6 @@
 package com.aldren.service;
 
+import com.aldren.exception.RecordNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -12,5 +13,7 @@ public interface QueryService<T> {
     String createData(T data) throws IOException;
 
     T getData(int id) throws IOException;
+
+    String deleteData(int id) throws IOException, RecordNotFoundException;
 
 }

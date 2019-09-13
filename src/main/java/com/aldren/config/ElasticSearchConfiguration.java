@@ -49,7 +49,7 @@ public class ElasticSearchConfiguration {
             }
         });
 
-        restClientBuilder.setNodeSelector(NodeSelector.SKIP_DEDICATED_MASTERS);
+        //restClientBuilder.setNodeSelector(NodeSelector.SKIP_DEDICATED_MASTERS);
 
         return new RestHighLevelClient(restClientBuilder);
     }
