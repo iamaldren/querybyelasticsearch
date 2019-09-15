@@ -9,9 +9,9 @@ import java.util.List;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Pokemon {
+public class PokemonES {
 
-    private int index;
+    private int id;
 
     private String name;
 

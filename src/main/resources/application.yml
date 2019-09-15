@@ -3,3 +3,11 @@ es:
   connection: http
   username: johndoe
   password: password
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/aldren
+    username: root
+    password: mypass
+    driverClassName: org.mariadb.jdbc.Driver
+    testWhileIdle: true
+    validationQuery: SELECT 1

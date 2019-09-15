@@ -2,7 +2,7 @@ package com.aldren.controller;
 
 import com.aldren.exception.BadRequetException;
 import com.aldren.exception.RecordNotFoundException;
-import com.aldren.model.Pokemon;
+import com.aldren.model.PokemonES;
 import com.aldren.model.Response;
 import com.aldren.service.QueryService;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -21,16 +21,17 @@ public class PokemonController {
 
     @Autowired
     @Qualifier("pokemonQueryService")
-    private QueryService<Pokemon> svc;
+    private QueryService<PokemonES> svc;
 
     @GetMapping("/pokemon/{id}")
-    public @ResponseBody Pokemon getPokemon(@PathVariable("id") int id) throws IOException {
+    public @ResponseBody
+    PokemonES getPokemon(@PathVariable("id") int id) throws IOException {
         return svc.getData(id);
     }
 
     @PostMapping("/pokemon")
-    public @ResponseBody Response addPokemon(Pokemon pokemon) throws IOException {
-        String result = svc.createData(pokemon);
+    public @ResponseBody Response addPokemon(PokemonES pokemonES) throws IOException {
+        String result = svc.createData(pokemonES);
 
         return Response.builder()
                 .timestamp(DateFormatUtils.format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSSZ"))

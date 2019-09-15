@@ -1,7 +1,7 @@
 package com.aldren.service.impl;
 
 import com.aldren.exception.RecordNotFoundException;
-import com.aldren.model.Pokemon;
+import com.aldren.model.PokemonES;
 import com.aldren.service.QueryService;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @Service
-public class PokemonQueryService implements QueryService<Pokemon> {
+public class PokemonQueryService implements QueryService<PokemonES> {
 
     private static final String INDEX = "pokemon";
 
@@ -29,9 +29,9 @@ public class PokemonQueryService implements QueryService<Pokemon> {
     private RestHighLevelClient client;
 
     @Override
-    public String createData(Pokemon data) throws IOException {
+    public String createData(PokemonES data) throws IOException {
         IndexRequest request = new IndexRequest(INDEX)
-                .id(String.valueOf(data.getIndex()));
+                .id(String.valueOf(data.getId()));
 
         String pokemonJson = mapper.writeValueAsString(data);
 
@@ -44,13 +44,13 @@ public class PokemonQueryService implements QueryService<Pokemon> {
     }
 
     @Override
-    public Pokemon getData(int id) throws IOException {
+    public PokemonES getData(int id) throws IOException {
         GetRequest request = new GetRequest(INDEX).id(String.valueOf(id));
 
         GetResponse response = client.get(request, RequestOptions.DEFAULT);
         Map<String, Object> result = response.getSource();
 
-        return mapper.convertValue(result, Pokemon.class);
+        return mapper.convertValue(result, PokemonES.class);
     }
 
     @Override
