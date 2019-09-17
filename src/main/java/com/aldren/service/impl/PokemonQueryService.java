@@ -2,6 +2,8 @@ package com.aldren.service.impl;
 
 import com.aldren.exception.RecordNotFoundException;
 import com.aldren.model.PokemonES;
+import com.aldren.model.tables.Pokemon;
+import com.aldren.service.DatabaseService;
 import com.aldren.service.QueryService;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
@@ -15,6 +17,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -28,6 +31,10 @@ public class PokemonQueryService implements QueryService<PokemonES> {
     @Autowired
     private RestHighLevelClient client;
 
+    @Autowired
+    @Qualifier("pokemonDatabaseService")
+    private DatabaseService<PokemonES> db;
+
     @Override
     public String createData(PokemonES data) throws IOException {
         IndexRequest request = new IndexRequest(INDEX)
@@ -39,6 +46,8 @@ public class PokemonQueryService implements QueryService<PokemonES> {
         request.timeout(TimeValue.timeValueSeconds(3L));
 
         IndexResponse response = client.index(request, RequestOptions.DEFAULT);
+
+        db.insertData(data);
 
         return response.getResult().name();
     }

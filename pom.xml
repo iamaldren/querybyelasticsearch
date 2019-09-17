@@ -101,7 +101,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+            <!-- plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
                 <executions>
@@ -141,7 +141,7 @@
                         <version>2.4.3</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin -->
         </plugins>
     </build>
 
