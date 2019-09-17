@@ -32,7 +32,6 @@ public class PokemonDatabaseService implements DatabaseService<PokemonES> {
            dsl.insertInto(Tables.POKEMON_TYPE_MAPPER)
                    .columns(Tables.POKEMON_TYPE_MAPPER.POKEMON_ID, Tables.POKEMON_TYPE_MAPPER.TYPE_ID)
                    .values(data.getId(), id)
-                   .values(data.getId(), id)
                    .execute();
        });
     }

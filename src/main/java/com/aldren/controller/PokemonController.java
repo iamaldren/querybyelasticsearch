@@ -30,7 +30,7 @@ public class PokemonController {
     }
 
     @PostMapping("/pokemon")
-    public @ResponseBody Response addPokemon(PokemonES pokemonES) throws IOException {
+    public @ResponseBody Response addPokemon(@RequestBody PokemonES pokemonES) throws IOException {
         String result = svc.createData(pokemonES);
 
         return Response.builder()
@@ -45,7 +45,7 @@ public class PokemonController {
     @DeleteMapping("/pokemon/{id}")
     public @ResponseBody Response deletePokemon(@PathVariable("id") int id) throws IOException,
             RecordNotFoundException, BadRequetException {
-        Optional<String> option = Optional.of(svc.deleteData(id));
+        Optional<String> option = Optional.ofNullable(svc.deleteData(id));
 
         if(!option.isPresent()) {
             throw new BadRequetException("Bad Request for pokemon with id of " + id);

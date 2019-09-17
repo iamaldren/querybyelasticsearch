@@ -1,5 +1,5 @@
 es:
-  instaces: localhost:9200
+  instances: localhost:9200
   connection: http
   username: elastic
   password: changeme

@@ -5,6 +5,7 @@ import com.aldren.model.PokemonES;
 import com.aldren.model.tables.Pokemon;
 import com.aldren.service.DatabaseService;
 import com.aldren.service.QueryService;
+import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class PokemonQueryService implements QueryService<PokemonES> {
 
     private static final String INDEX = "pokemon";

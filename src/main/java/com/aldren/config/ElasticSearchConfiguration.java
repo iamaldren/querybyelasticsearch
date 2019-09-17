@@ -9,6 +9,7 @@ import org.apache.http.client.CredentialsProvider;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.elasticsearch.client.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Slf4j
 @Configuration
+@EnableConfigurationProperties(ElasticSearchProperties.class)
 public class ElasticSearchConfiguration {
 
     @Autowired

@@ -17,6 +17,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <springboot-version>2.1.5.RELEASE</springboot-version>
+        <elasticsearch.version>7.3.0</elasticsearch.version>
     </properties>
 
     <parent>
@@ -43,7 +44,7 @@
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
-            <version>7.3.1</version>
+            <version>7.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
