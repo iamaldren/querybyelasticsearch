@@ -8,7 +8,7 @@ This is a sample project that uses the below stack:
 
 ## Prerequisites
 
-Running instance of the below apps:
+Running instance of the below:
 - Elasticsearch
 - MariaDB
 
