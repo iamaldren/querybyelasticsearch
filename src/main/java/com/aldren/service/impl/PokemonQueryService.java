@@ -75,6 +75,7 @@ public class PokemonQueryService implements QueryService<PokemonES> {
         }
 
         if(response.getResult() == DocWriteResponse.Result.DELETED) {
+            db.deleteData(id);
             return String.format("Delete for record with id %d from pokemon index is successfully deleted.", id);
         }
 

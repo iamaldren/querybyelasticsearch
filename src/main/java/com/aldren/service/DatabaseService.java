@@ -6,4 +6,6 @@ public interface DatabaseService<T> {
 
     void insertData(T data);
 
+    void deleteData(int id);
+
 }

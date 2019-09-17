@@ -35,4 +35,12 @@ public class PokemonDatabaseService implements DatabaseService<PokemonES> {
                    .execute();
        });
     }
+
+    @Override
+    @Async
+    public void deleteData(int id) {
+        dsl.delete(Tables.POKEMON).where(Tables.POKEMON.ID.eq(id));
+        dsl.delete(Tables.POKEMON_TYPE_MAPPER).where(Tables.POKEMON_TYPE_MAPPER.POKEMON_ID.eq(id));
+    }
+
 }
