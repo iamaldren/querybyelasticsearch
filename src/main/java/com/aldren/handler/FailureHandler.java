@@ -30,7 +30,7 @@ public class FailureHandler {
                 .build();
     }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({ElasticsearchException.class, IOException.class})
     public @ResponseBody
     Response handleBadRequestException(Exception e, WebRequest w) {
